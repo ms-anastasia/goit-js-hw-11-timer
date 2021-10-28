@@ -3,8 +3,8 @@ class CountdownTimer {
     this.selector = selector;
     this.targetDate = targetDate;
     this.init();
-  
-   
+
+
     this.days = document.querySelector('[data-value="days"]');
     this.hours = document.querySelector('[data-value="hours"]');
     this.mins = document.querySelector('[data-value="mins"]');
@@ -15,6 +15,11 @@ class CountdownTimer {
       const currentTime = Date.now();
       const time = this.targetDate - currentTime;
       this.changeTimer(this.getTime(time));
+      
+      if (time < 0) {
+        this.clearInterval()
+      }
+
     }, 1000);
   }
 
@@ -40,7 +45,7 @@ class CountdownTimer {
 }
 new CountdownTimer({
   selector: '#timer-1',
-    targetDate: new Date('01/01/2022'),
-  
+  targetDate: new Date('01/01/2022'),
+
 });
 
