@@ -11,13 +11,13 @@ class CountdownTimer {
     this.secs = document.querySelector('[data-value="secs"]');
   }
   init() {
-    setInterval(() => {
+    const timerStart = setInterval(() => {
       const currentTime = Date.now();
       const time = this.targetDate - currentTime;
       this.changeTimer(this.getTime(time));
       
       if (time < 0) {
-        this.clearInterval()
+       clearInterval(timerStart)
       }
 
     }, 1000);
@@ -45,7 +45,7 @@ class CountdownTimer {
 }
 new CountdownTimer({
   selector: '#timer-1',
-  targetDate: new Date('01/01/2022'),
+  targetDate: new Date('Jan 1, 2022'),
 
 });
 
